@@ -1,0 +1,14 @@
+# REGISTRO DE AUDITORÍA PERIMETRAL — SERVIDOR DMZ (RENDER CLOUD)
+# Estudiante: Mariluz David Martínez
+# Institución: IU Digital de Antioquia
+# Actividad: Unidad 2 — Demostración en vivo y evaluación de laboratorio en la nube
+# Servicio Render: laboratorio-ciberseguridad-mariluz-david-martinez (srv-dbnav2gu01pc73c86p0g)
+# URL: https://laboratorio-ciberseguridad-mariluz-david.onrender.com
+# Extracción de eventos reales correspondientes a GET / y GET /health (HTTP 200)
+
+AUDIT_LOG | timestamp_utc=2026-11-07T05:00:46Z | method=GET | path=/health | status_code=200
+AUDIT_LOG | timestamp_utc=2026-11-07T05:05:48Z | method=GET | path=/health | status_code=200
+AUDIT_LOG | timestamp_utc=2026-11-07T05:05:53Z | method=GET | path=/ | status_code=200
+AUDIT_LOG | timestamp_utc=2026-11-07T05:07:10Z | method=GET | path=/ | status_code=200
+AUDIT_LOG | timestamp_utc=2026-11-07T05:07:12Z | method=GET | path=/health | status_code=200
+
