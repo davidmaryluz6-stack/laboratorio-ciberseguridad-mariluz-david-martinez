@@ -1,0 +1,20 @@
+==================================================================
+ LABORATORIO DE CIBERSEGURIDAD — IU DIGITAL DE ANTIOQUIA
+ Estudiante: Mariluz David Martínez
+ Módulo 02: Reconocimiento y Escaneo de Puertos en DMZ
+==================================================================
+[INFO] Host objetivo local asignado: servidor-dmz
+[SEGURIDAD OK] El host pertenece a la red Docker aislada del laboratorio.
+[RECONOCIMIENTO] Analizando puertos estándar en el contenedor objetivo (servidor-dmz)...
+  -> Probando puerto 21 (FTP)... [CERRADO / FILTERED]
+  -> Probando puerto 22 (SSH)... [CERRADO / FILTERED]
+  -> Probando puerto 80 (HTTP)... [CERRADO / FILTERED]
+  -> Probando puerto 443 (HTTPS)... [CERRADO / FILTERED]
+  -> Probando puerto 8080 (DMZ-WEB)... [ABIERTO / OPEN]
+  -> Probando puerto 3306 (MySQL)... [CERRADO / FILTERED]
+==================================================================
+ [ANÁLISIS FORENSE] Reducción de Superficie de Ataque:
+   Solo el puerto 8080 (servicio DMZ) debe estar expuesto.
+   Servicios administrativos o bases de datos no deben ser accesibles en la DMZ.
+==================================================================
+

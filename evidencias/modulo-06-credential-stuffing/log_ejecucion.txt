@@ -1,0 +1,36 @@
+==================================================================
+ LABORATORIO DE CIBERSEGURIDAD — IU DIGITAL DE ANTIOQUIA
+ Estudiante: Mariluz David Martínez
+ Módulo 06: Simulación Controlada de Credential Stuffing / Brute Force
+==================================================================
+[INFO] Objetivo local asignado: http://servidor-dmz:8080
+[SEGURIDAD OK] El objetivo pertenece a la red Docker privada del laboratorio.
+
+[AUDITORÍA TÉCNICA - ANÁLISIS DE RESPUESTAS HTTP]
+  - Nota de seguridad: El endpoint raíz '/' del servidor DMZ es un recurso público.
+  - No exige desafío 'WWW-Authenticate: Basic realm=...'.
+  - Cualquier solicitud HTTP recibe el HTML público con código HTTP 200.
+
+[PRUEBA DE FUERZA BRUTA] Despachando intentos controlados con cabecera Authorization: Basic...
+  -> Petición con usuario [admin_demo]: HTTP 200 [Página pública entregada por DMZ]
+  -> Petición con usuario [root_demo]: HTTP 200 [Página pública entregada por DMZ]
+  -> Petición con usuario [user_test]: HTTP 200 [Página pública entregada por DMZ]
+  -> Petición con usuario [docente_demo]: HTTP 200 [Página pública entregada por DMZ]
+  -> Petición con usuario [gestor_test]: HTTP 200 [Página pública entregada por DMZ]
+
+==================================================================
+ [DICTAMEN FORENSE - DIFERENCIACIÓN TÉCNICA CLAVE]
+   ⚠️  RECIBIR HTTP 200 != AUTENTICARSE SATISFACTORIAMENTE
+   1. Causa técnica del HTTP 200:
+      El servidor perimetral no tiene activo un middleware de autenticación
+      en la ruta '/'. El servidor ignora cabeceras Authorization no solicitadas
+      y devuelve el panel público 200 OK.
+   2. En un servicio realmente protegido (ej. /admin o /login):
+      - Credenciales incorrectas deben generar: HTTP 401 Unauthorized.
+      - Credenciales correctas generan: HTTP 200 OK con token de sesión.
+   3. Mitigaciones indispensables para proteger endpoints de autenticación:
+       - Desafíos CAPTCHA adaptativos.
+       - Rate Limiting estricto en rutas de autenticación.
+       - Bloqueo temporal por intentos fallidos (Account Lockout).
+       - Autenticación Multifactor (MFA).
+==================================================================

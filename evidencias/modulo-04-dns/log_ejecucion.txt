@@ -1,0 +1,27 @@
+==================================================================
+ LABORATORIO DE CIBERSEGURIDAD — IU DIGITAL DE ANTIOQUIA
+ Estudiante: Mariluz David Martínez
+ Módulo 04: Demostración de Exfiltración por Canal Encubierto DNS
+==================================================================
+[AUDITORÍA DE AISLAMIENTO] Verificando aislamiento de red Docker (internal: true)...
+  - La red privada lab-dmz-net no posee enrutamiento hacia Internet.
+  - Se previene cualquier reenvío recursivo hacia resolvedores DNS públicos externos.
+
+[CONCEPTO] Técnica de exfiltración de datos vía DNS (T1048.003 - MITRE ATT&CK):
+  1. Dato sensible simulado: 'clave_ficticia_demo_2026'
+  2. Codificación Base64 sin padding: 'Y2xhdmVfZmljdGljaWFfZGVtb18yMDI2'
+  3. Construcción del FQDN malicioso: 'Y2xhdmVfZmljdGljaWFfZGVtb18yMDI2.lab.dmz.local'
+
+[SIMULACIÓN CONTROLADA] Levantando receptor DNS local simulado en loopback...
+[DNS QUERY] Enviando consulta A para Y2xhdmVfZmljdGljaWFfZGVtb18yMDI2.lab.dmz.local al receptor local (127.0.0.1:1053)...
+[DNS-SINKHOLE] Servidor DNS simulado a la escucha en 127.0.0.1:1053...
+[CAPTURA FORENSE] Consulta DNS interceptada desde ('127.0.0.1', 57911):
+   -> QNAME Recibido: Y2xhdmVfZmljdGljaWFfZGVtb18yMDI2.lab.dmz.local.
+   -> Payload Decodificado: Y2xhdmVfZmljdGljaWFfZGVtb18yMDI2
+
+==================================================================
+ [ANÁLISIS FORENSE] Evidencia de Fuga y Prevención:
+   - La consulta viajó estrictamente dentro del contenedor y la red aislada.
+   - El payload fue capturado en el QNAME sin tocar la infraestructura pública.
+   - Mitigaciones: Inspección de DPI para DNS, bloqueo de túneles y DNSSEC.
+==================================================================

@@ -1,0 +1,45 @@
+==================================================================
+ LABORATORIO DE CIBERSEGURIDAD — IU DIGITAL DE ANTIOQUIA
+ Estudiante: Mariluz David Martínez
+ Módulo 01: Simulación de Tráfico Masivo (DoS Controlado)
+==================================================================
+[INFO] Objetivo local asignado: http://servidor-dmz:8080
+[SEGURIDAD OK] El objetivo pertenece a la red privada y controlada del laboratorio.
+[SIMULACIÓN] Iniciando ráfaga controlada de 30 solicitudes HTTP concurrentes...
+  -> Petición #11: HTTP 200 [Recibida por DMZ]
+  -> Petición #6: HTTP 200 [Recibida por DMZ]
+  -> Petición #9: HTTP 200 [Recibida por DMZ]
+  -> Petición #4: HTTP 200 [Recibida por DMZ]
+  -> Petición #25: HTTP 200 [Recibida por DMZ]
+  -> Petición #3: HTTP 200 [Recibida por DMZ]
+  -> Petición #23: HTTP 200 [Recibida por DMZ]
+  -> Petición #18: HTTP 200 [Recibida por DMZ]
+  -> Petición #26: HTTP 200 [Recibida por DMZ]
+  -> Petición #21: HTTP 200 [Recibida por DMZ]
+  -> Petición #22: HTTP 200 [Recibida por DMZ]
+  -> Petición #27: HTTP 200 [Recibida por DMZ]
+  -> Petición #1: HTTP 200 [Recibida por DMZ]
+  -> Petición #14: HTTP 200 [Recibida por DMZ]
+  -> Petición #16: HTTP 200 [Recibida por DMZ]
+  -> Petición #15: HTTP 200 [Recibida por DMZ]
+  -> Petición #12: HTTP 200 [Recibida por DMZ]
+  -> Petición #24: HTTP 200 [Recibida por DMZ]
+  -> Petición #17: HTTP 200 [Recibida por DMZ]
+  -> Petición #8: HTTP 200 [Recibida por DMZ]
+  -> Petición #29: HTTP 200 [Recibida por DMZ]
+  -> Petición #19: HTTP 200 [Recibida por DMZ]
+  -> Petición #10: HTTP 200 [Recibida por DMZ]
+  -> Petición #28: HTTP 200 [Recibida por DMZ]
+  -> Petición #13: HTTP 200 [Recibida por DMZ]
+  -> Petición #7: HTTP 200 [Recibida por DMZ]
+  -> Petición #20: HTTP 200 [Recibida por DMZ]
+  -> Petición #5: HTTP 200 [Recibida por DMZ]
+  -> Petición #2: HTTP 200 [Recibida por DMZ]
+  -> Petición #30: HTTP 200 [Recibida por DMZ]
+==================================================================
+ [RESULTADO] Ráfaga controlada finalizada en 0s.
+ [ANÁLISIS FORENSE] En un escenario DoS no controlado:
+   1. El consumo de workers y descriptores de archivo satura el servicio.
+   2. Mecanismos de defensa: Rate Limiting en Nginx/WAF, CDN y fail2ban.
+==================================================================
+

@@ -1,0 +1,104 @@
+services:
+  # ==========================================================
+  # NODO OBJETIVO PERIMETRAL: SERVIDOR DMZ (Módulo 00)
+  # ==========================================================
+  servidor-dmz:
+    build:
+      context: ./00-servidor-dmz
+      dockerfile: Dockerfile
+    container_name: lab-servidor-dmz
+    ports:
+      - "8088:8080"
+    environment:
+      - PORT=8080
+    networks:
+      - lab-dmz-net
+    restart: unless-stopped
+
+  # ==========================================================
+  # CLIENTES DE DEMOSTRACIÓN PEDAGÓGICA (Módulos 01 a 07)
+  # ==========================================================
+  01-ataque-dos:
+    build:
+      context: ./01-ataque-dos
+      dockerfile: Dockerfile
+    container_name: lab-modulo-01-dos
+    environment:
+      - TARGET=http://servidor-dmz:8080
+    depends_on:
+      - servidor-dmz
+    networks:
+      - lab-dmz-net
+
+  02-escaneo-puertos:
+    build:
+      context: ./02-escaneo-puertos
+      dockerfile: Dockerfile
+    container_name: lab-modulo-02-escaneo
+    environment:
+      - HOST=servidor-dmz
+    depends_on:
+      - servidor-dmz
+    networks:
+      - lab-dmz-net
+
+  03-fuerza-bruta-rutas:
+    build:
+      context: ./03-fuerza-bruta-rutas
+      dockerfile: Dockerfile
+    container_name: lab-modulo-03-rutas
+    environment:
+      - TARGET=http://servidor-dmz:8080
+    depends_on:
+      - servidor-dmz
+    networks:
+      - lab-dmz-net
+
+  04-exfiltracion-dns:
+    build:
+      context: ./04-exfiltracion-dns
+      dockerfile: Dockerfile
+    container_name: lab-modulo-04-dns
+    networks:
+      - lab-dmz-net
+
+  05-cadena-suministro:
+    build:
+      context: ./05-cadena-suministro
+      dockerfile: Dockerfile
+    container_name: lab-modulo-05-suministro
+    networks:
+      - lab-dmz-net
+
+  06-credential-stuffing:
+    build:
+      context: ./06-credential-stuffing
+      dockerfile: Dockerfile
+    container_name: lab-modulo-06-auth
+    environment:
+      - TARGET=http://servidor-dmz:8080
+    depends_on:
+      - servidor-dmz
+    networks:
+      - lab-dmz-net
+
+  07-proxy-mitm:
+    build:
+      context: ./07-proxy-mitm
+      dockerfile: Dockerfile
+    container_name: lab-modulo-07-mitm
+    ports:
+      - "8089:8080"
+    environment:
+      - TARGET_DMZ=http://servidor-dmz:8080
+      - PORT=8080
+    depends_on:
+      - servidor-dmz
+    networks:
+      - lab-dmz-net
+    restart: unless-stopped
+
+networks:
+  lab-dmz-net:
+    driver: bridge
+    internal: true

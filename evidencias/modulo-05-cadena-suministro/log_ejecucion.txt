@@ -1,0 +1,25 @@
+==================================================================
+ LABORATORIO DE CIBERSEGURIDAD — IU DIGITAL DE ANTIOQUIA
+ Estudiante: Mariluz David Martínez
+ Módulo 05: Simulación de Ataque a la Cadena de Suministro (Supply Chain)
+==================================================================
+[INSPECCIÓN] Verificando integridad del artefacto y dependencias del contenedor...
+
+⚠️  [ALERTA DE SEGURIDAD - AUDITORÍA DE BUILD]
+    Se detectó una dependencia/script no autorizado inyectado durante
+    la etapa de construcción (build phase) de la imagen Docker.
+
+--- Inicio de traza simulada ---
+[PAYLOAD DEMO] Alerta: Dependencia no autorizada ejecutada en tiempo de ejecución (Runtime).
+--- Fin de traza simulada ---
+
+==================================================================
+ [ANÁLISIS FORENSE] Seguridad en la Cadena de Suministro de Software:
+   - Amenaza: Inyección de código malicioso en repositorios de paquetes o Dockerfiles.
+   - Mitigaciones:
+       1. Firma y verificación de imágenes con Docker Content Trust (Notary / Cosign).
+       2. Escaneo de vulnerabilidades en CI/CD (Trivy, Grype, Docker Scout).
+       3. Fijación estricta de versiones y hashes en dependencias (Lockfiles).
+       4. Principio de menor privilegio y uso de imágenes base mínimas/endurecidas.
+==================================================================
+

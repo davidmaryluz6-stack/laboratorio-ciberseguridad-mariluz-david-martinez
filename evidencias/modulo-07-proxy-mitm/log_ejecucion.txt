@@ -1,0 +1,24 @@
+==================================================================
+ LABORATORIO DE CIBERSEGURIDAD — IU DIGITAL DE ANTIOQUIA
+ Estudiante: Mariluz David Martínez
+ Módulo 07: Proxy Interceptor y Demostración MITM
+==================================================================
+[INFO] Proxy interceptor iniciado en puerto local (red Docker).
+[INFO] Reenvío hacia nodo DMZ: http://servidor-dmz:8080
+
+[MITM INTERCEPTADO] Petición entrante hacia la ruta: /
+[CABECERAS INTERCEPTADAS] Método: GET | User-Agent: Mozilla/5.0 (Windows NT 10.0; es-CO)
+[MITM ALERTA] Respuesta original obtenida de DMZ (HTTP 200).
+[MITM ALERTA] Modificación en tránsito: Inyectado banner HTML visual y comentario de auditoría.
+[STATUS COMPROBADO] Código HTTP: 200 OK | Banner inyectado verificado: TRUE
+
+==================================================================
+ [ANÁLISIS FORENSE] Interceptación Man-In-The-Middle y Tránsito No Cifrado:
+   - Amenaza: Un atacante en la misma ruta de red (ARP Spoofing, Proxy no seguro)
+     puede inspeccionar y alterar datos en vuelo si no se utiliza TLS de extremo a extremo.
+   - Mitigaciones indispensables:
+       1. Cifrado TLS/HTTPS estricto (mTLS para servicios internos).
+       2. Encabezado HTTP Strict Transport Security (HSTS).
+       3. Certificate Pinning y validación rigurosa de cadenas de confianza.
+==================================================================
+

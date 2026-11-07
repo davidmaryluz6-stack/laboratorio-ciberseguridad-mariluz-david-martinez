@@ -1,0 +1,22 @@
+==================================================================
+ LABORATORIO DE CIBERSEGURIDAD — IU DIGITAL DE ANTIOQUIA
+ Estudiante: Mariluz David Martínez
+ Módulo 03: Enumeración de Rutas Web (Detección de Directorios)
+==================================================================
+[INFO] Objetivo local asignado: http://servidor-dmz:8080
+[SEGURIDAD OK] El objetivo pertenece a la red Docker privada del laboratorio.
+[ENUMERACIÓN] Probando rutas conocidas sobre el servidor DMZ...
+  -> Ruta probada: /  =>  ENCONTRADO / DISPONIBLE (200)
+  -> Ruta probada: /health  =>  ENCONTRADO / DISPONIBLE (200)
+  -> Ruta probada: /admin  =>  NO ENCONTRADO (404)
+  -> Ruta probada: /config.php  =>  NO ENCONTRADO (404)
+  -> Ruta probada: /login  =>  NO ENCONTRADO (404)
+  -> Ruta probada: /secret  =>  NO ENCONTRADO (404)
+  -> Ruta probada: /backup.zip  =>  NO ENCONTRADO (404)
+  -> Ruta probada: /index.html  =>  NO ENCONTRADO (404)
+==================================================================
+ [ANÁLISIS FORENSE] Detección de Reconocimiento Web:
+   Una ráfaga de respuestas 404 consecutivas indica escaneo de directorios.
+   Defensas: Reglas en WAF (ModSecurity), monitoreo de logs con Fail2ban.
+==================================================================
+
